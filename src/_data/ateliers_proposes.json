@@ -1,0 +1,10 @@
+{
+  "titre": "Ateliers proposés",
+  "intro": "Gratuits, sur inscription à l'accueil de la médiathèque.",
+  "liste": [
+    { "nom": "Découverte de l'impression 3D", "details": "Dès 10 ans · 1 h 30" },
+    { "nom": "Initiation à la découpe laser", "details": "Dès 14 ans · 2 h" },
+    { "nom": "Stickers et pochoirs en vinyle", "details": "Dès 8 ans · 1 h 30" },
+    { "nom": "Flocage de t-shirt", "details": "En famille · 2 h" }
+  ]
+}
