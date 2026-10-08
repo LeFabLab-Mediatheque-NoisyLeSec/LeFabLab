@@ -9,10 +9,8 @@ consignes_securite:
   - Ne touchez jamais la buse ni le plateau pendant et juste après l'impression
     (plus de 200 °C).
   - Restez à proximité pendant la première couche, puis vérifiez régulièrement.
-  - Ne lancez pas d'impression de plus de 3 heures sans accord de l'équipe.
 materiaux_ok:
   - PLA (fourni par le fablab)
-  - PETG (sur demande)
 materiaux_interdits:
   - Bobines apportées sans validation de l'équipe
 ---
