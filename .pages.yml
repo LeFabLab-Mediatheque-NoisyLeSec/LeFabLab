@@ -27,12 +27,18 @@ content:
     filename: "{primary}.md"
     view:
       primary: title
-      sort: title
+      sort: date_publication
+      order: desc
     fields:
       - name: title
         label: Titre du tutoriel
         type: string
         required: true
+      - name: date_publication
+        label: Date de publication
+        type: date
+        required: true
+        description: Les 4 tutoriels les plus récents s'affichent sur la page d'accueil.
       - name: machine
         label: Machine
         type: select
@@ -243,6 +249,37 @@ content:
           format: markdown
 
   # ------------------------------------------------------------------
+  - name: ateliers_proposes
+    label: Ateliers proposés (accueil)
+    type: file
+    path: src/_data/ateliers_proposes.json
+    format: json
+    fields:
+      - name: titre
+        label: Titre de l'encadré
+        type: string
+      - name: intro
+        label: Phrase d'introduction
+        type: string
+        description: "Exemple : Gratuits, sur inscription à l'accueil."
+      - name: liste
+        label: Ateliers
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{nom}"
+        fields:
+          - name: nom
+            label: Nom de l'atelier
+            type: string
+            required: true
+          - name: details
+            label: Public et durée
+            type: string
+            description: "Exemple : Dès 10 ans · 1 h 30"
+
+  # ------------------------------------------------------------------
   - name: reglages
     label: Réglages du site
     type: file
@@ -278,4 +315,10 @@ content:
         type: string
       - name: lien_reservation
         label: Lien de réservation (facultatif)
+        type: string
+      - name: lien_facebook
+        label: Lien de la page Facebook (laisser vide pour masquer)
+        type: string
+      - name: lien_instagram
+        label: Lien du compte Instagram (laisser vide pour masquer)
         type: string
