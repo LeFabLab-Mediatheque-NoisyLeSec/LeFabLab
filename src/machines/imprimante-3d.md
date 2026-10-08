@@ -1,12 +1,13 @@
 ---
 title: Imprimante 3D
 ordre: 1
-image: /media/machines/imprimante-3d.svg
-modele: "À compléter (marque et modèle)"
+image: /media/machines/imprimante3d.jpg
+modele: Elegoo Centauri Carbon 2
 description: Fabriquez des objets en plastique, couche par couche, à partir d'un modèle 3D.
 formation_obligatoire: false
 consignes_securite:
-  - Ne touchez jamais la buse ni le plateau pendant et juste après l'impression (plus de 200 °C).
+  - Ne touchez jamais la buse ni le plateau pendant et juste après l'impression
+    (plus de 200 °C).
   - Restez à proximité pendant la première couche, puis vérifiez régulièrement.
   - Ne lancez pas d'impression de plus de 3 heures sans accord de l'équipe.
 materiaux_ok:
