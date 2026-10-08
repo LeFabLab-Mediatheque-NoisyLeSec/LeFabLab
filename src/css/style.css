@@ -61,10 +61,25 @@ h3, .h3 { font-size: 1.15rem; margin: 0 0 .4rem; }
 
 .annonce { background: var(--accent); color: var(--encre); font-weight: 600; padding: .55rem 0; font-size: .95rem; }
 
-main { padding-top: 1.5rem; padding-bottom: 3rem; min-height: 60vh; }
+ main.wrap { padding-top: 1.5rem; padding-bottom: 3.5rem; min-height: 60vh; }
 
 /* Accueil */
-.hero { padding: 1.5rem 0 1rem; max-width: 48rem; }
+     .accueil-haut { display: grid; gap: 1.5rem 3rem; align-items: start; padding-top: 1rem; }
+     @media (min-width: 56rem) { .accueil-haut { grid-template-columns: minmax(0, 1fr) 22rem; } }
+     .hero { padding: .5rem 0 0; max-width: 48rem; }
+     .encart-ateliers { background: var(--carte); border: 1px solid var(--ligne); border-top: 6px solid var(--accent); border-radius: var(--rayon); padding: .4rem 1.4rem 1.2rem; }
+     .encart-ateliers h2 { font-size: 1.25rem; margin: 1rem 0 .3rem; }
+     .encart-intro { color: var(--discret); margin: 0 0 .6rem; font-size: .95rem; }
+     .encart-ateliers ul { list-style: none; margin: 0 0 1rem; padding: 0; }
+     .encart-ateliers li { padding: .55rem 0; border-bottom: 1px solid var(--ligne); }
+     .encart-ateliers li:last-child { border-bottom: 0; }
+     .encart-nom { display: block; font-weight: 600; color: var(--encre); }
+     .encart-details { display: block; color: var(--discret); font-size: .9rem; }
+     .lien-suite { font-weight: 600; white-space: nowrap; }
+     .rangee { margin-top: 2.6rem; }
+     .rangee-tete { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .3rem 1rem; margin-bottom: .9rem; }
+     .rangee-tete h2 { margin: 0; }
+     @media (min-width: 64rem) { .cartes-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .6rem; }
 .chapo { font-size: 1.15rem; color: var(--texte); max-width: 46rem; }
 
