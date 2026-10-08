@@ -5,10 +5,7 @@ layout: layouts/base.njk
   <section class="hero" aria-labelledby="h-presentation">
     <h1 id="h-presentation">{{ site.nom }}</h1>
     <p class="chapo">{{ site.intro_accueil }}</p>
-    <p class="hero-actions">
-      <a class="bouton" href="/tutoriels/">Voir les tutoriels</a>
-      <a class="bouton bouton-secondaire" href="/infos/">Comment venir et utiliser le fablab</a>
-    </p>
+
   </section>
 
   {% if ateliers_proposes.liste and ateliers_proposes.liste.length %}
