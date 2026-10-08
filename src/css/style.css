@@ -47,8 +47,8 @@ h3, .h3 { font-size: 1.15rem; margin: 0 0 .4rem; }
 .site-header { background: var(--encre); color: #fff; }
 .header-inner { display: flex; flex-wrap: wrap; gap: .8rem 2rem; align-items: center; justify-content: space-between; padding-top: .9rem; padding-bottom: .9rem; }
 .brand { display: flex; gap: .75rem; align-items: center; color: #fff; text-decoration: none; }
-.brand-mark { width: 2.2rem; height: 2.2rem; border-radius: 8px; background: var(--accent); flex: none;
-  background-image: linear-gradient(135deg, transparent 45%, var(--encre) 45% 55%, transparent 55%); }
+/*.brand-mark { width: 2.2rem; height: 2.2rem; border-radius: 8px; background: var(--accent); flex: none;
+  background-image: linear-gradient(135deg, transparent 45%, var(--encre) 45% 55%, transparent 55%); }*/
 .brand-name { display: block; font-weight: 700; font-size: 1.1rem; }
 .brand-slogan { display: block; font-size: .85rem; opacity: .8; }
 .nav { list-style: none; display: flex; flex-wrap: wrap; gap: .3rem; margin: 0; padding: 0; }
