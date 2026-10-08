@@ -9,7 +9,7 @@ image: /media/ateliers/atelier-exemple.svg
 galerie:
   - /media/ateliers/atelier-exemple.svg
   - /media/ateliers/atelier-exemple-2.svg
-brouillon: true
+brouillon: false
 ---
 Pendant deux heures, les participants ont découvert le dessin vectoriel sur Inkscape, puis assisté à la gravure de leur création sur du contreplaqué de 3 mm.
 
