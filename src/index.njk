@@ -3,14 +3,18 @@ layout: layouts/base.njk
 ---
 <div class="accueil-haut">
   <section class="hero" aria-labelledby="h-presentation">
+    <h1 id="h-presentation">{{ site.nom }}</h1>
     <p class="chapo">{{ site.intro_accueil }}</p>
-
+    <p class="hero-actions">
+      <a class="bouton" href="/tutoriels/">Voir les tutoriels</a>
+      <a class="bouton bouton-secondaire" href="/infos/">Comment venir et utiliser le fablab</a>
+    </p>
   </section>
 
   {% if ateliers_proposes.liste and ateliers_proposes.liste.length %}
   <aside class="encart-ateliers" aria-labelledby="h-ateliers-proposes">
     <h2 id="h-ateliers-proposes">{{ ateliers_proposes.titre or "Ateliers proposés" }}</h2>
-
+    {% if ateliers_proposes.intro %}<p class="encart-intro">{{ ateliers_proposes.intro }}</p>{% endif %}
     <ul>
       {% for a in ateliers_proposes.liste %}
       <li>
@@ -19,16 +23,13 @@ layout: layouts/base.njk
       </li>
       {% endfor %}
     </ul>
-    {% if ateliers_proposes.intro %}<p class="encart-intro">{{ ateliers_proposes.intro }}</p>{% endif %}
+    <a class="lien-suite" href="/ateliers/">Retours des ateliers passés →</a>
   </aside>
   {% endif %}
 </div>
 
 <section class="rangee" aria-labelledby="h-machines">
-  <div class="rangee-tete">
-    <h2 id="h-machines">Les machines</h2>
-    <a class="lien-suite" href="/machines/">Toutes les machines →</a>
-  </div>
+  <h2 id="h-machines">Les machines</h2>
   <ul class="cartes cartes-4">
     {% for m in collections.machines %}
     <li class="carte">
@@ -40,30 +41,27 @@ layout: layouts/base.njk
     </li>
     {% endfor %}
   </ul>
+  <p class="rangee-pied"><a class="lien-suite" href="/machines/">Toutes les machines →</a></p>
 </section>
 
 {% set derniersTutos = collections.tutoriels | plusRecents | limite(4) %}
 {% if derniersTutos.length %}
 <section class="rangee" aria-labelledby="h-tutoriels">
-  <div class="rangee-tete">
-    <h2 id="h-tutoriels">Derniers tutoriels</h2>
-    <a class="lien-suite" href="/tutoriels/">Tous les tutoriels →</a>
-  </div>
+  <h2 id="h-tutoriels">Derniers tutoriels</h2>
   <ul class="cartes cartes-4">
     {% for t in derniersTutos %}{% include "partials/carte-tuto.njk" %}{% endfor %}
   </ul>
+  <p class="rangee-pied"><a class="lien-suite" href="/tutoriels/">Tous les tutoriels →</a></p>
 </section>
 {% endif %}
 
 {% set derniersAteliers = collections.ateliers | limite(4) %}
 {% if derniersAteliers.length %}
 <section class="rangee" aria-labelledby="h-ateliers">
-  <div class="rangee-tete">
-    <h2 id="h-ateliers">Derniers ateliers</h2>
-    <a class="lien-suite" href="/ateliers/">Tous les ateliers →</a>
-  </div>
+  <h2 id="h-ateliers">Derniers ateliers</h2>
   <ul class="cartes cartes-4">
     {% for a in derniersAteliers %}{% include "partials/carte-atelier.njk" %}{% endfor %}
   </ul>
+  <p class="rangee-pied"><a class="lien-suite" href="/ateliers/">Tous les ateliers →</a></p>
 </section>
 {% endif %}
