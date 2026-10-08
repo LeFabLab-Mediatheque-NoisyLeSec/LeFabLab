@@ -1,7 +1,7 @@
 {
   "name": "site-fablab",
   "version": "1.0.0",
-  "description": "Site du fablab de la médiathèque : tutoriels machines, infos pratiques, retours d'ateliers",
+  "description": "Site du fablab de la Médiathèque Roger Gouhier : tutoriels machines, infos pratiques, retours d'ateliers",
   "type": "module",
   "private": true,
   "scripts": {
