@@ -17,6 +17,7 @@
   --rayon: 10px;
   --largeur: 72rem;
   font-size: 106.25%;
+  font-family: 'IBM Plex Sans', sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -25,7 +26,8 @@ body {
   margin: 0;
   background: var(--papier);
   color: var(--texte);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /*font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;*/
+  font-family : 'IBM Plex Sans', sans-serif;
   line-height: 1.6;
 }
 
