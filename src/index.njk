@@ -1,18 +1,39 @@
 ---
 layout: layouts/base.njk
 ---
-<section class="hero">
-  <h2>{{ site.nom }}</h2>
-  <p class="chapo">{{ site.intro_accueil }}</p>
+<div class="accueil-haut">
+  <section class="hero" aria-labelledby="h-presentation">
+    <h1 id="h-presentation">{{ site.nom }}</h1>
+    <p class="chapo">{{ site.intro_accueil }}</p>
+    <p class="hero-actions">
+      <a class="bouton" href="/tutoriels/">Voir les tutoriels</a>
+      <a class="bouton bouton-secondaire" href="/infos/">Comment venir et utiliser le fablab</a>
+    </p>
+  </section>
 
-    <p class="bouton">L'OpenLab <br> Tous les mardis soir de 18h00 à 20h00<br><br> Vous avez un projet à réalisé avec l'une des machines, vous souhaitez en savoir plus sur LeFabLab. <br><br> Inscription par mail : mediatheque.noisylesec@est-ensemble.fr <br> Par téléphone au 01 83 74 57 61 </p>
-    <p class="bouton">Les samedis du FabLab <br> Les samedis de 10h30 à 12h00 <br><br> Nous vous proposons toutes l'année des cycles de deux ateliers pour découvrir nos différentes machines (imprimante 3d, découpeuse vinyle, découpeuse laser). <br><br> Pour connaître la programmation n'hésitez pas à nous contacter.</p>
+  {% if ateliers_proposes.liste and ateliers_proposes.liste.length %}
+  <aside class="encart-ateliers" aria-labelledby="h-ateliers-proposes">
+    <h2 id="h-ateliers-proposes">{{ ateliers_proposes.titre or "Ateliers proposés" }}</h2>
+    {% if ateliers_proposes.intro %}<p class="encart-intro">{{ ateliers_proposes.intro }}</p>{% endif %}
+    <ul>
+      {% for a in ateliers_proposes.liste %}
+      <li>
+        <span class="encart-nom">{{ a.nom }}</span>
+        {% if a.details %}<span class="encart-details">{{ a.details }}</span>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    <a class="lien-suite" href="/ateliers/">Retours des ateliers passés →</a>
+  </aside>
+  {% endif %}
+</div>
 
-</section>
-
-<section aria-labelledby="h-machines">
-  <h2 id="h-machines">Les machines</h2>
-  <ul class="cartes cartes-machines">
+<section class="rangee" aria-labelledby="h-machines">
+  <div class="rangee-tete">
+    <h2 id="h-machines">Les machines</h2>
+    <a class="lien-suite" href="/machines/">Toutes les machines →</a>
+  </div>
+  <ul class="cartes cartes-4">
     {% for m in collections.machines %}
     <li class="carte">
       {% if m.data.image %}<img src="{{ m.data.image }}" alt="" loading="lazy">{% endif %}
@@ -25,13 +46,28 @@ layout: layouts/base.njk
   </ul>
 </section>
 
-{% set derniers = collections.ateliers | limite(3) %}
-{% if derniers.length %}
-<section aria-labelledby="h-ateliers">
-  <h2 id="h-ateliers">Derniers ateliers</h2>
-  <ul class="cartes">
-    {% for a in derniers %}{% include "partials/carte-atelier.njk" %}{% endfor %}
+{% set derniersTutos = collections.tutoriels | plusRecents | limite(4) %}
+{% if derniersTutos.length %}
+<section class="rangee" aria-labelledby="h-tutoriels">
+  <div class="rangee-tete">
+    <h2 id="h-tutoriels">Derniers tutoriels</h2>
+    <a class="lien-suite" href="/tutoriels/">Tous les tutoriels →</a>
+  </div>
+  <ul class="cartes cartes-4">
+    {% for t in derniersTutos %}{% include "partials/carte-tuto.njk" %}{% endfor %}
   </ul>
-  <p><a href="/ateliers/">Tous les retours d'ateliers →</a></p>
+</section>
+{% endif %}
+
+{% set derniersAteliers = collections.ateliers | limite(4) %}
+{% if derniersAteliers.length %}
+<section class="rangee" aria-labelledby="h-ateliers">
+  <div class="rangee-tete">
+    <h2 id="h-ateliers">Derniers ateliers</h2>
+    <a class="lien-suite" href="/ateliers/">Tous les ateliers →</a>
+  </div>
+  <ul class="cartes cartes-4">
+    {% for a in derniersAteliers %}{% include "partials/carte-atelier.njk" %}{% endfor %}
+  </ul>
 </section>
 {% endif %}
