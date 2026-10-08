@@ -56,6 +56,16 @@ export default function (eleventyConfig) {
     (machines || []).find((m) => m.fileSlug === slug)
   );
 
+  // Tutoriels du plus récent au plus ancien (champ "date_publication").
+  // Un tutoriel sans date passe en dernier.
+  eleventyConfig.addFilter("plusRecents", (tutos) =>
+    [...(tutos || [])].sort((a, b) => {
+      const da = a.data.date_publication ? new Date(a.data.date_publication) : 0;
+      const db = b.data.date_publication ? new Date(b.data.date_publication) : 0;
+      return db - da;
+    })
+  );
+
   // Les N premiers éléments
   eleventyConfig.addFilter("limite", (arr, n) => (arr || []).slice(0, n));
 
