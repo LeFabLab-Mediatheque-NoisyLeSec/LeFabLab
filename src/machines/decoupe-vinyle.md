@@ -5,12 +5,9 @@ image: /media/machines/decoupeusevinyle.jpg
 modele: Secabo C30IV
 description: Créez des autocollants, des pochoirs et des flocages textiles.
 formation_obligatoire: false
-consignes_securite:
-  - Utilisez le cutter de pelage avec la lame orientée loin de vous.
 materiaux_ok:
   - Vinyle adhésif
   - Vinyle thermocollant (flocage textile)
-  - Papier et carte fine
 materiaux_interdits:
   - Supports plus épais que ce qu'indique la notice de la machine
 ---
