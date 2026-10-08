@@ -150,3 +150,6 @@ h3, .h3 { font-size: 1.15rem; margin: 0 0 .4rem; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 @media print { .site-header nav, .annonce, .site-footer { display: none; } .site-header { background: none; color: #000; } }
+
+   .rangee h2 { margin: 0 0 .9rem; }
+   .rangee-pied { margin: 1rem 0 0; }
