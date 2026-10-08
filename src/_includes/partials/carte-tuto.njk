@@ -1,0 +1,11 @@
+<li class="carte">
+  {% if t.data.image %}<img src="{{ t.data.image }}" alt="" loading="lazy">{% endif %}
+  <div class="carte-corps">
+    <h3><a href="{{ t.url }}">{{ t.data.title }}</a></h3>
+    {% if t.data.resume %}<p>{{ t.data.resume }}</p>{% endif %}
+    <p class="meta">
+      {% if t.data.niveau %}<span class="badge">{{ t.data.niveau }}</span>{% endif %}
+      {% if t.data.duree %}<span>{{ t.data.duree }}</span>{% endif %}
+    </p>
+  </div>
+</li>

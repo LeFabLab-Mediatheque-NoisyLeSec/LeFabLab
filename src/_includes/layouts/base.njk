@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if title %}{{ title }} · {% endif %}{{ site.nom }}</title>
+  <meta name="description" content="{{ resume or description or site.slogan }}">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/media/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>
+          <span class="brand-name">{{ site.nom }}</span>
+          <span class="brand-slogan">{{ site.slogan }}</span>
+        </span>
+      </a>
+      {% set rubrique = page.url.split("/")[1] %}
+      <nav aria-label="Navigation principale">
+        <ul class="nav">
+          <li><a href="/machines/" {% if rubrique == "machines" %}aria-current="page"{% endif %}>Machines</a></li>
+          <li><a href="/tutoriels/" {% if rubrique == "tutoriels" %}aria-current="page"{% endif %}>Tutoriels</a></li>
+          <li><a href="/ateliers/" {% if rubrique == "ateliers" %}aria-current="page"{% endif %}>Ateliers</a></li>
+          <li><a href="/infos/" {% if rubrique == "infos" %}aria-current="page"{% endif %}>Infos pratiques</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  {% if site.annonce %}
+  <div class="annonce"><div class="wrap">{{ site.annonce }}</div></div>
+  {% endif %}
+
+  <main id="contenu" class="wrap">
+    {{ content | safe }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <p class="footer-title">{{ site.nom }}</p>
+        <p>{{ site.adresse }}<br>{{ site.horaires_resume }}</p>
+      </div>
+      <div>
+        <p class="footer-title">Contact</p>
+        <p><a href="mailto:{{ site.email }}">{{ site.email }}</a><br>{{ site.telephone }}</p>
+      </div>
+      <div>
+        <p class="footer-title">Ce site</p>
+        <p>Contenus sous licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr">CC BY-SA 4.0</a>.<br>
+        Aucun cookie, aucun traceur.
+        {% if site.lien_mediatheque %}<br><a href="{{ site.lien_mediatheque }}">Site de la médiathèque</a>{% endif %}</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

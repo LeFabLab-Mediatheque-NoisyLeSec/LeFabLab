@@ -1,0 +1,57 @@
+---
+layout: layouts/base.njk
+---
+<nav class="ariane" aria-label="Fil d'Ariane"><a href="/machines/">Machines</a> › {{ title }}</nav>
+
+<article class="fiche">
+  <header class="fiche-head">
+    <div>
+      <p class="surtitre">Fiche machine</p>
+      <h1>{{ title }}</h1>
+      {% if modele %}<p class="meta">Modèle : {{ modele }}</p>{% endif %}
+      {% if description %}<p class="chapo">{{ description }}</p>{% endif %}
+      {% if formation_obligatoire %}
+      <p class="badge badge-alerte">Formation obligatoire avant la première utilisation</p>
+      {% endif %}
+    </div>
+    {% if image %}<img class="fiche-img" src="{{ image }}" alt="">{% endif %}
+  </header>
+
+  {% if consignes_securite and consignes_securite.length %}
+  <section class="encadre encadre-securite" aria-labelledby="secu">
+    <h2 id="secu">Sécurité</h2>
+    <ul>{% for c in consignes_securite %}<li>{{ c }}</li>{% endfor %}</ul>
+  </section>
+  {% endif %}
+
+  {% if (materiaux_ok and materiaux_ok.length) or (materiaux_interdits and materiaux_interdits.length) %}
+  <section class="materiaux">
+    {% if materiaux_ok and materiaux_ok.length %}
+    <div class="encadre">
+      <h2>Matériaux acceptés</h2>
+      <ul>{% for m in materiaux_ok %}<li>{{ m }}</li>{% endfor %}</ul>
+    </div>
+    {% endif %}
+    {% if materiaux_interdits and materiaux_interdits.length %}
+    <div class="encadre encadre-interdit">
+      <h2>Matériaux interdits</h2>
+      <ul>{% for m in materiaux_interdits %}<li>{{ m }}</li>{% endfor %}</ul>
+    </div>
+    {% endif %}
+  </section>
+  {% endif %}
+
+  <div class="prose">{{ content | safe }}</div>
+
+  {% set tutos = collections.tutoriels | parMachine(page.fileSlug) %}
+  <section aria-labelledby="tutos">
+    <h2 id="tutos">Tutoriels pour cette machine</h2>
+    {% if tutos.length %}
+    <ul class="cartes">
+      {% for t in tutos %}{% include "partials/carte-tuto.njk" %}{% endfor %}
+    </ul>
+    {% else %}
+    <p>Les tutoriels arrivent bientôt.</p>
+    {% endif %}
+  </section>
+</article>

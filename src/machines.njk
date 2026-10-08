@@ -1,0 +1,19 @@
+---
+layout: layouts/base.njk
+title: Machines
+permalink: /machines/
+---
+<h1>Les machines du fablab</h1>
+<p class="chapo">Chaque fiche présente la machine, les consignes de sécurité, les matériaux autorisés et les tutoriels associés.</p>
+<ul class="cartes cartes-machines">
+  {% for m in collections.machines %}
+  <li class="carte">
+    {% if m.data.image %}<img src="{{ m.data.image }}" alt="" loading="lazy">{% endif %}
+    <div class="carte-corps">
+      <h2 class="h3"><a href="{{ m.url }}">{{ m.data.title }}</a></h2>
+      {% if m.data.description %}<p>{{ m.data.description }}</p>{% endif %}
+      {% if m.data.formation_obligatoire %}<p class="badge badge-alerte">Formation obligatoire</p>{% endif %}
+    </div>
+  </li>
+  {% endfor %}
+</ul>

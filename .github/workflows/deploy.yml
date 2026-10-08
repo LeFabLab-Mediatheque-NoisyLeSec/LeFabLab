@@ -1,0 +1,53 @@
+# Publie automatiquement le site sur GitHub Pages à chaque modification.
+name: Publication du site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:   # bouton "Run workflow" pour relancer à la main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Configuration de GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - run: npm ci
+
+      - name: Génération du site
+        run: npx @11ty/eleventy
+        env:
+          # "/nom-du-depot/" sur github.io, "/" avec un nom de domaine personnalisé
+          PATH_PREFIX: ${{ steps.pages.outputs.base_path }}/
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

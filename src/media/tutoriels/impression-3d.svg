@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Impression 3D">
+<rect width="800" height="500" fill="#FBE3D5"/>
+<g fill="none" stroke="#9A3412" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><path d="M250 170l150-70 150 70v160l-150 70-150-70z"/><path d="M250 170l150 70 150-70M400 240v160"/></g>
+<text x="400" y="460" font-family="system-ui,sans-serif" font-size="26" fill="#9A3412" text-anchor="middle" opacity=".75">Impression 3D · image à remplacer</text>
+</svg>

@@ -1,0 +1,16 @@
+{
+  "name": "site-fablab",
+  "version": "1.0.0",
+  "description": "Site du fablab de la médiathèque : tutoriels machines, infos pratiques, retours d'ateliers",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "license": "CC-BY-SA-4.0",
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.6",
+    "markdown-it": "15.0.2"
+  }
+}

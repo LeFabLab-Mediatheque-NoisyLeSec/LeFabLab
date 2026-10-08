@@ -1,0 +1,9 @@
+---
+layout: layouts/base.njk
+---
+<nav class="ariane" aria-label="Fil d'Ariane"><a href="/infos/">Infos pratiques</a> › {{ title }}</nav>
+<article>
+  <h1>{{ title }}</h1>
+  {% if resume %}<p class="chapo">{{ resume }}</p>{% endif %}
+  <div class="prose">{{ content | safe }}</div>
+</article>

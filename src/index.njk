@@ -1,0 +1,37 @@
+---
+layout: layouts/base.njk
+---
+<section class="hero">
+  <h1>{{ site.nom }}</h1>
+  <p class="chapo">{{ site.intro_accueil }}</p>
+  <p class="hero-actions">
+    <a class="bouton" href="/tutoriels/">Voir les tutoriels</a>
+    <a class="bouton bouton-secondaire" href="/infos/">Comment venir et utiliser le fablab</a>
+  </p>
+</section>
+
+<section aria-labelledby="h-machines">
+  <h2 id="h-machines">Les machines</h2>
+  <ul class="cartes cartes-machines">
+    {% for m in collections.machines %}
+    <li class="carte">
+      {% if m.data.image %}<img src="{{ m.data.image }}" alt="" loading="lazy">{% endif %}
+      <div class="carte-corps">
+        <h3><a href="{{ m.url }}">{{ m.data.title }}</a></h3>
+        {% if m.data.description %}<p>{{ m.data.description }}</p>{% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+{% set derniers = collections.ateliers | limite(3) %}
+{% if derniers.length %}
+<section aria-labelledby="h-ateliers">
+  <h2 id="h-ateliers">Derniers ateliers</h2>
+  <ul class="cartes">
+    {% for a in derniers %}{% include "partials/carte-atelier.njk" %}{% endfor %}
+  </ul>
+  <p><a href="/ateliers/">Tous les retours d'ateliers →</a></p>
+</section>
+{% endif %}

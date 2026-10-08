@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+title: Infos pratiques
+permalink: /infos/
+---
+<h1>Infos pratiques</h1>
+
+<div class="infos-contact encadre">
+  <p><strong>Où ?</strong> {{ site.adresse }}</p>
+  <p><strong>Quand ?</strong> {{ site.horaires_resume }}</p>
+  <p><strong>Contact :</strong> <a href="mailto:{{ site.email }}">{{ site.email }}</a> · {{ site.telephone }}</p>
+  {% if site.lien_reservation %}<p><a class="bouton" href="{{ site.lien_reservation }}">Réserver une machine</a></p>{% endif %}
+</div>
+
+<ul class="liste-infos">
+  {% for p in collections.infos %}
+  <li>
+    <h2 class="h3"><a href="{{ p.url }}">{{ p.data.title }}</a></h2>
+    {% if p.data.resume %}<p>{{ p.data.resume }}</p>{% endif %}
+  </li>
+  {% endfor %}
+</ul>

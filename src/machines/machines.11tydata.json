@@ -1,0 +1,4 @@
+{
+  "layout": "layouts/machine.njk",
+  "permalink": "/machines/{{ page.fileSlug }}/"
+}

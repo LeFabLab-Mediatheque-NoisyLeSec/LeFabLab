@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Découpe laser">
+<rect width="800" height="500" fill="#DCEBF0"/>
+<g fill="none" stroke="#155E75" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><rect x="200" y="110" width="400" height="230" rx="14"/><path d="M200 170h400"/><path d="M400 170v90" stroke-dasharray="14 12"/><path d="M380 280l20-20 20 20"/><rect x="250" y="300" width="300" height="20"/></g>
+<text x="400" y="460" font-family="system-ui,sans-serif" font-size="26" fill="#155E75" text-anchor="middle" opacity=".75">Découpe laser · image à remplacer</text>
+</svg>

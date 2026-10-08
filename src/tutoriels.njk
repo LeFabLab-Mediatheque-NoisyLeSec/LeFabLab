@@ -1,0 +1,21 @@
+---
+layout: layouts/base.njk
+title: Tutoriels
+permalink: /tutoriels/
+---
+<h1>Tutoriels</h1>
+<p class="chapo">Des fiches pas à pas pour préparer vos fichiers et utiliser les machines en autonomie.</p>
+
+{% for m in collections.machines %}
+{% set tutos = collections.tutoriels | parMachine(m.fileSlug) %}
+<section aria-labelledby="t-{{ m.fileSlug }}">
+  <h2 id="t-{{ m.fileSlug }}"><a href="{{ m.url }}">{{ m.data.title }}</a></h2>
+  {% if tutos.length %}
+  <ul class="cartes">
+    {% for t in tutos %}{% include "partials/carte-tuto.njk" %}{% endfor %}
+  </ul>
+  {% else %}
+  <p>Les tutoriels arrivent bientôt.</p>
+  {% endif %}
+</section>
+{% endfor %}

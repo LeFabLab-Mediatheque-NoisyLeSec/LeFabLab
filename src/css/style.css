@@ -1,0 +1,134 @@
+/* Site du fablab — feuille de style unique.
+   Les couleurs se changent ici, dans :root. */
+:root {
+  --encre: #1d2b36;
+  --texte: #2b3640;
+  --discret: #5b6670;
+  --papier: #faf7f2;
+  --carte: #ffffff;
+  --ligne: #e4ddd2;
+  --accent: #f97316;      /* décoratif uniquement */
+  --lien: #9a3412;        /* orange foncé, contraste AA */
+  --securite-fond: #fff4e5;
+  --securite-bord: #f59e0b;
+  --interdit-fond: #fdecec;
+  --interdit-bord: #dc2626;
+  --rayon: 10px;
+  --largeur: 72rem;
+  font-size: 106.25%;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--papier);
+  color: var(--texte);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--lien); text-underline-offset: .15em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+
+h1, h2, h3, .h3 { color: var(--encre); line-height: 1.2; }
+h1 { font-size: clamp(1.9rem, 4vw, 2.6rem); margin: .2em 0 .4em; letter-spacing: -.01em; }
+h2 { font-size: 1.5rem; margin: 2.2rem 0 .8rem; }
+h3, .h3 { font-size: 1.15rem; margin: 0 0 .4rem; }
+
+.wrap { max-width: var(--largeur); margin: 0 auto; padding: 0 1rem; }
+
+.skip { position: absolute; left: -999px; top: 0; background: var(--encre); color: #fff; padding: .6rem 1rem; z-index: 10; }
+.skip:focus { left: 1rem; }
+
+/* En-tête */
+.site-header { background: var(--encre); color: #fff; }
+.header-inner { display: flex; flex-wrap: wrap; gap: .8rem 2rem; align-items: center; justify-content: space-between; padding-top: .9rem; padding-bottom: .9rem; }
+.brand { display: flex; gap: .75rem; align-items: center; color: #fff; text-decoration: none; }
+.brand-mark { width: 2.2rem; height: 2.2rem; border-radius: 8px; background: var(--accent); flex: none;
+  background-image: linear-gradient(135deg, transparent 45%, var(--encre) 45% 55%, transparent 55%); }
+.brand-name { display: block; font-weight: 700; font-size: 1.1rem; }
+.brand-slogan { display: block; font-size: .85rem; opacity: .8; }
+.nav { list-style: none; display: flex; flex-wrap: wrap; gap: .3rem; margin: 0; padding: 0; }
+.nav a { color: #fff; text-decoration: none; padding: .45rem .8rem; border-radius: 999px; display: block; }
+.nav a:hover { background: rgba(255,255,255,.12); }
+.nav a[aria-current="page"] { background: #fff; color: var(--encre); font-weight: 600; }
+
+.annonce { background: var(--accent); color: var(--encre); font-weight: 600; padding: .55rem 0; font-size: .95rem; }
+
+main { padding-top: 1.5rem; padding-bottom: 3rem; min-height: 60vh; }
+
+/* Accueil */
+.hero { padding: 1.5rem 0 1rem; max-width: 48rem; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: .6rem; }
+.chapo { font-size: 1.15rem; color: var(--texte); max-width: 46rem; }
+
+.bouton { display: inline-block; background: var(--encre); color: #fff; text-decoration: none; padding: .7rem 1.2rem; border-radius: var(--rayon); font-weight: 600; }
+.bouton:hover { background: #2c4252; }
+.bouton-secondaire { background: transparent; color: var(--encre); border: 2px solid var(--encre); }
+.bouton-secondaire:hover { background: var(--encre); color: #fff; }
+
+/* Cartes */
+.cartes { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
+.carte { background: var(--carte); border: 1px solid var(--ligne); border-radius: var(--rayon); overflow: hidden; display: flex; flex-direction: column; position: relative; transition: transform .15s, box-shadow .15s; }
+.carte:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(29,43,54,.08); }
+.carte img { aspect-ratio: 16 / 10; object-fit: cover; width: 100%; }
+.carte-corps { padding: 1rem 1.1rem 1.2rem; }
+.carte-corps p { margin: .3rem 0; }
+.carte h3 a, .carte .h3 a { color: var(--encre); text-decoration: none; }
+.carte h3 a::after, .carte .h3 a::after { content: ""; position: absolute; inset: 0; } /* carte entière cliquable */
+.carte h3 a:focus-visible::after { outline: 3px solid var(--accent); }
+
+.meta { color: var(--discret); font-size: .92rem; display: flex; flex-wrap: wrap; gap: .3rem .8rem; align-items: center; margin: .3rem 0; }
+.badge { display: inline-block; background: #eef2f4; color: var(--encre); border-radius: 999px; padding: .1rem .65rem; font-size: .85rem; font-weight: 600; }
+.badge-alerte { background: var(--interdit-fond); color: #991b1b; }
+.surtitre { text-transform: uppercase; letter-spacing: .06em; font-size: .8rem; font-weight: 700; color: var(--lien); margin: 0; }
+.ariane { font-size: .9rem; color: var(--discret); margin-bottom: .5rem; }
+
+/* Fiches machine, tutoriel */
+.fiche-head { display: grid; gap: 1.5rem; align-items: start; }
+@media (min-width: 52rem) { .fiche-head { grid-template-columns: 1.3fr 1fr; } }
+.fiche-img, .atelier-couverture { border-radius: var(--rayon); border: 1px solid var(--ligne); }
+.atelier-couverture { margin: 1rem 0; max-height: 28rem; width: 100%; object-fit: cover; }
+
+.encadre { background: var(--carte); border: 1px solid var(--ligne); border-left: 6px solid var(--encre); border-radius: var(--rayon); padding: .4rem 1.2rem .8rem; margin: 1.2rem 0; }
+.encadre h2 { font-size: 1.15rem; margin: .8rem 0 .4rem; }
+.encadre ul { margin: .3rem 0; padding-left: 1.2rem; }
+.encadre-securite { background: var(--securite-fond); border-left-color: var(--securite-bord); }
+.encadre-interdit { background: var(--interdit-fond); border-left-color: var(--interdit-bord); }
+.materiaux, .tuto-avant { display: grid; gap: 0 1.2rem; }
+@media (min-width: 46rem) { .materiaux, .tuto-avant { grid-template-columns: 1fr 1fr; } }
+
+.prose { max-width: 46rem; }
+.prose h2 { font-size: 1.3rem; }
+
+/* Étapes numérotées */
+.etapes { list-style: none; counter-reset: etape; padding: 0; margin: 0; }
+.etape { counter-increment: etape; display: grid; gap: 1rem; background: var(--carte); border: 1px solid var(--ligne); border-radius: var(--rayon); padding: 1.2rem 1.2rem 1.2rem 4.2rem; margin-bottom: 1rem; position: relative; }
+.etape::before { content: counter(etape); position: absolute; left: 1.1rem; top: 1.1rem; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--accent); color: var(--encre); font-weight: 800; display: grid; place-items: center; }
+.etape h3 { margin-top: .25rem; }
+.etape-texte > :last-child { margin-bottom: 0; }
+.etape img { border-radius: 8px; border: 1px solid var(--ligne); }
+@media (min-width: 52rem) { .etape:has(img) { grid-template-columns: 1.4fr 1fr; } }
+
+/* Galerie */
+.galerie { list-style: none; padding: 0; display: grid; gap: .6rem; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); }
+.galerie img { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; border-radius: 8px; }
+
+/* Infos */
+.liste-infos { list-style: none; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); }
+.liste-infos li { background: var(--carte); border: 1px solid var(--ligne); border-radius: var(--rayon); padding: 1rem 1.2rem; }
+.liste-infos p { margin: .3rem 0 0; color: var(--discret); }
+.infos-contact p { margin: .5rem 0; }
+
+/* Pied de page */
+.site-footer { background: var(--encre); color: #dfe6ea; font-size: .92rem; padding: 2rem 0; }
+.site-footer a { color: #fff; }
+.footer-grid { display: grid; gap: 1rem 2rem; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); }
+.footer-title { color: #fff; font-weight: 700; margin-bottom: .2rem; }
+.site-footer p { margin-top: 0; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+@media print { .site-header nav, .annonce, .site-footer { display: none; } .site-header { background: none; color: #000; } }

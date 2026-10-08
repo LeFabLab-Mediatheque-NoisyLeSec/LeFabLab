@@ -1,0 +1,62 @@
+---
+layout: layouts/base.njk
+---
+{% set m = collections.machines | machineParSlug(machine) %}
+<nav class="ariane" aria-label="Fil d'Ariane">
+  <a href="/tutoriels/">Tutoriels</a>
+  {% if m %} › <a href="{{ m.url }}">{{ m.data.title }}</a>{% endif %} › {{ title }}
+</nav>
+
+<article class="tuto">
+  <header class="fiche-head">
+    <div>
+      <p class="surtitre">Tutoriel{% if m %} · {{ m.data.title }}{% endif %}</p>
+      <h1>{{ title }}</h1>
+      {% if resume %}<p class="chapo">{{ resume }}</p>{% endif %}
+      <p class="meta">
+        {% if niveau %}<span class="badge">{{ niveau }}</span>{% endif %}
+        {% if duree %}<span>Durée : {{ duree }}</span>{% endif %}
+      </p>
+    </div>
+    {% if image %}<img class="fiche-img" src="{{ image }}" alt="">{% endif %}
+  </header>
+
+  <div class="tuto-avant">
+    {% if materiel and materiel.length %}
+    <section class="encadre">
+      <h2>Ce qu'il vous faut</h2>
+      <ul>{% for x in materiel %}<li>{{ x }}</li>{% endfor %}</ul>
+    </section>
+    {% endif %}
+    {% if securite and securite.length %}
+    <section class="encadre encadre-securite">
+      <h2>Sécurité</h2>
+      <ul>{% for x in securite %}<li>{{ x }}</li>{% endfor %}</ul>
+    </section>
+    {% endif %}
+  </div>
+
+  {% if etapes and etapes.length %}
+  <section aria-labelledby="etapes">
+    <h2 id="etapes">Étapes</h2>
+    <ol class="etapes">
+      {% for e in etapes %}
+      <li class="etape">
+        <div class="etape-texte">
+          <h3>{{ e.titre }}</h3>
+          {{ e.texte | md | safe }}
+        </div>
+        {% if e.image %}<img src="{{ e.image }}" alt="{{ e.legende or '' }}" loading="lazy">{% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+  {% endif %}
+
+  {% if content | trim %}
+  <section class="prose">
+    <h2>Problèmes fréquents et astuces</h2>
+    {{ content | safe }}
+  </section>
+  {% endif %}
+</article>

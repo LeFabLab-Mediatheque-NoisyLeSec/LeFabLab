@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Découpeuse vinyle">
+<rect width="800" height="500" fill="#F3EDE3"/>
+<g fill="none" stroke="#1D2B36" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><rect x="180" y="160" width="440" height="110" rx="20"/><path d="M220 270v60h360v-60"/><path d="M300 330c40 60 160 60 200 0"/><circle cx="540" cy="215" r="18"/></g>
+<text x="400" y="460" font-family="system-ui,sans-serif" font-size="26" fill="#1D2B36" text-anchor="middle" opacity=".75">Découpeuse vinyle · image à remplacer</text>
+</svg>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Imprimante 3D">
+<rect width="800" height="500" fill="#FBE3D5"/>
+<g fill="none" stroke="#9A3412" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><rect x="250" y="70" width="300" height="300" rx="12"/><line x1="250" y1="130" x2="550" y2="130"/><path d="M380 130v60l20 20 20-20v-60"/><rect x="300" y="300" width="200" height="20"/><path d="M350 300l20-60h60l20 60"/></g>
+<text x="400" y="460" font-family="system-ui,sans-serif" font-size="26" fill="#9A3412" text-anchor="middle" opacity=".75">Imprimante 3D · image à remplacer</text>
+</svg>

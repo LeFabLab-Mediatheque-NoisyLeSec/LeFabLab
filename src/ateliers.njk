@@ -1,0 +1,14 @@
+---
+layout: layouts/base.njk
+title: Ateliers
+permalink: /ateliers/
+---
+<h1>Retours d'ateliers</h1>
+<p class="chapo">Ce qui s'est fabriqué au fablab, en images.</p>
+{% if collections.ateliers.length %}
+<ul class="cartes">
+  {% for a in collections.ateliers %}{% include "partials/carte-atelier.njk" %}{% endfor %}
+</ul>
+{% else %}
+<p>Aucun retour d'atelier pour le moment.</p>
+{% endif %}

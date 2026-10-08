@@ -1,0 +1,281 @@
+# Configuration de l'interface d'édition Pages CMS (https://pagescms.org)
+# Ce fichier décrit les formulaires que voient les éditeurs.
+# Modifiable uniquement par les administrateurs GitHub du dépôt.
+
+settings:
+  commit:
+    identity: user          # chaque modification porte le nom de son auteur
+    templates:
+      create: "Ajout : {path} (par {userName})"
+      update: "Modification : {path} (par {userName})"
+      delete: "Suppression : {path} (par {userName})"
+      rename: "Renommage : {oldPath} -> {newPath} (par {userName})"
+
+media:
+  input: src/media
+  output: /media
+  rename: safe
+  extensions: [jpg, jpeg, png, webp, svg, pdf]
+
+content:
+  # ------------------------------------------------------------------
+  - name: tutoriels
+    label: Tutoriels
+    type: collection
+    path: src/tutoriels
+    exclude: [tutoriels.11tydata.json]
+    filename: "{primary}.md"
+    view:
+      primary: title
+      sort: title
+    fields:
+      - name: title
+        label: Titre du tutoriel
+        type: string
+        required: true
+      - name: machine
+        label: Machine
+        type: select
+        required: true
+        description: Si vous ajoutez une machine, un administrateur doit l'ajouter aussi à cette liste.
+        options:
+          values:
+            - name: imprimante-3d
+              label: Imprimante 3D
+            - name: decoupe-laser
+              label: Découpeuse laser
+            - name: decoupe-vinyle
+              label: Découpeuse vinyle
+      - name: niveau
+        label: Niveau
+        type: select
+        options:
+          values: [Débutant, Intermédiaire, Confirmé]
+      - name: duree
+        label: Durée estimée
+        type: string
+        description: "Exemple : 45 min, 1 h (hors temps d'impression)"
+      - name: resume
+        label: Résumé (une ou deux phrases)
+        type: text
+      - name: image
+        label: Image principale
+        type: image
+        options:
+          path: src/media/tutoriels
+      - name: materiel
+        label: Ce qu'il vous faut
+        type: string
+        list: true
+      - name: securite
+        label: Consignes de sécurité
+        type: string
+        list: true
+      - name: etapes
+        label: Étapes
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "Étape {index} : {titre}"
+        fields:
+          - name: titre
+            label: Titre de l'étape
+            type: string
+            required: true
+          - name: texte
+            label: Explications
+            type: rich-text
+            options:
+              format: markdown
+              path: src/media/tutoriels
+          - name: image
+            label: Photo ou capture d'écran
+            type: image
+            options:
+              path: src/media/tutoriels
+          - name: legende
+            label: Description de l'image (pour les personnes malvoyantes)
+            type: string
+      - name: body
+        label: Problèmes fréquents et astuces
+        type: rich-text
+        options:
+          format: markdown
+          path: src/media/tutoriels
+      - name: brouillon
+        label: Brouillon (ne pas publier)
+        type: boolean
+
+  # ------------------------------------------------------------------
+  - name: ateliers
+    label: Retours d'ateliers
+    type: collection
+    path: src/ateliers
+    exclude: [ateliers.11tydata.json]
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      primary: title
+      sort: date_atelier
+      order: desc
+    fields:
+      - name: title
+        label: Titre
+        type: string
+        required: true
+      - name: date_atelier
+        label: Date de l'atelier
+        type: date
+        required: true
+      - name: public
+        label: Public
+        type: string
+        description: "Exemple : familles, à partir de 8 ans"
+      - name: resume
+        label: Résumé (une ou deux phrases)
+        type: text
+      - name: autorisations
+        label: J'ai vérifié les autorisations de droit à l'image
+        type: boolean
+        description: "Obligatoire si une personne est reconnaissable. Sinon, préférez des photos de mains, de machines et d'objets."
+      - name: image
+        label: Photo principale
+        type: image
+        options:
+          path: src/media/ateliers
+      - name: galerie
+        label: Galerie photos
+        type: image
+        description: "Redimensionnez vos photos avant l'envoi (1600 px de large maximum)."
+        options:
+          path: src/media/ateliers
+          multiple:
+            max: 12
+      - name: lien_album
+        label: Lien vers un album photo externe (facultatif)
+        type: string
+      - name: body
+        label: Récit de l'atelier
+        type: rich-text
+        options:
+          format: markdown
+          path: src/media/ateliers
+      - name: brouillon
+        label: Brouillon (ne pas publier)
+        type: boolean
+
+  # ------------------------------------------------------------------
+  - name: machines
+    label: Machines
+    type: collection
+    path: src/machines
+    exclude: [machines.11tydata.json]
+    filename: "{primary}.md"
+    view:
+      primary: title
+      sort: ordre
+    fields:
+      - name: title
+        label: Nom de la machine
+        type: string
+        required: true
+      - name: ordre
+        label: Ordre d'affichage
+        type: number
+      - name: image
+        label: Photo de la machine
+        type: image
+        options:
+          path: src/media/machines
+      - name: modele
+        label: Marque et modèle
+        type: string
+      - name: description
+        label: Description courte
+        type: text
+      - name: formation_obligatoire
+        label: Formation obligatoire avant la première utilisation
+        type: boolean
+      - name: consignes_securite
+        label: Consignes de sécurité
+        type: string
+        list: true
+      - name: materiaux_ok
+        label: Matériaux acceptés
+        type: string
+        list: true
+      - name: materiaux_interdits
+        label: Matériaux interdits
+        type: string
+        list: true
+      - name: body
+        label: Présentation détaillée
+        type: rich-text
+        options:
+          format: markdown
+          path: src/media/machines
+
+  # ------------------------------------------------------------------
+  - name: infos
+    label: Infos pratiques
+    type: collection
+    path: src/infos
+    exclude: [infos.11tydata.json]
+    filename: "{primary}.md"
+    view:
+      primary: title
+      sort: ordre
+    fields:
+      - name: title
+        label: Titre
+        type: string
+        required: true
+      - name: ordre
+        label: Ordre d'affichage
+        type: number
+      - name: resume
+        label: Résumé
+        type: text
+      - name: body
+        label: Contenu
+        type: rich-text
+        options:
+          format: markdown
+
+  # ------------------------------------------------------------------
+  - name: reglages
+    label: Réglages du site
+    type: file
+    path: src/_data/site.json
+    format: json
+    fields:
+      - name: nom
+        label: Nom du fablab
+        type: string
+      - name: slogan
+        label: Slogan
+        type: string
+      - name: annonce
+        label: Bandeau d'annonce (laisser vide pour le masquer)
+        type: string
+      - name: intro_accueil
+        label: Texte d'accueil
+        type: text
+      - name: adresse
+        label: Adresse
+        type: string
+      - name: horaires_resume
+        label: Horaires (résumé)
+        type: string
+      - name: telephone
+        label: Téléphone
+        type: string
+      - name: email
+        label: E-mail de contact (adresse générique)
+        type: string
+      - name: lien_mediatheque
+        label: Lien vers le site de la médiathèque
+        type: string
+      - name: lien_reservation
+        label: Lien de réservation (facultatif)
+        type: string

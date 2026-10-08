@@ -1,0 +1,32 @@
+---
+layout: layouts/base.njk
+---
+<nav class="ariane" aria-label="Fil d'Ariane"><a href="/ateliers/">Ateliers</a> › {{ title }}</nav>
+
+<article class="atelier">
+  <header>
+    <p class="surtitre">Retour d'atelier · <time datetime="{{ date_atelier | dateIso }}">{{ date_atelier | dateFr }}</time></p>
+    <h1>{{ title }}</h1>
+    {% if public %}<p class="meta">Public : {{ public }}</p>{% endif %}
+    {% if resume %}<p class="chapo">{{ resume }}</p>{% endif %}
+  </header>
+
+  {% if image %}<img class="atelier-couverture" src="{{ image }}" alt="">{% endif %}
+
+  <div class="prose">{{ content | safe }}</div>
+
+  {% if galerie and galerie.length %}
+  <section aria-labelledby="galerie">
+    <h2 id="galerie">En images</h2>
+    <ul class="galerie">
+      {% for photo in galerie %}
+      <li><a href="{{ photo }}"><img src="{{ photo }}" alt="Photo de l'atelier {{ loop.index }}" loading="lazy"></a></li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% if lien_album %}
+  <p><a class="bouton" href="{{ lien_album }}">Voir l'album photo complet</a></p>
+  {% endif %}
+</article>

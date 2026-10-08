@@ -1,0 +1,12 @@
+{
+  "nom": "Fablab de la médiathèque",
+  "slogan": "Apprendre, fabriquer, partager",
+  "intro_accueil": "Le fablab est un atelier de fabrication numérique ouvert à toutes et tous, gratuitement, aux horaires de la médiathèque. Vous y trouverez une imprimante 3D, une découpeuse laser et une découpeuse vinyle, et une équipe pour vous accompagner.",
+  "adresse": "1 place de la Médiathèque, 00000 Ville",
+  "telephone": "01 00 00 00 00",
+  "email": "fablab@ville.fr",
+  "horaires_resume": "Mercredi et samedi, 14 h – 18 h",
+  "lien_mediatheque": "https://www.example.org",
+  "lien_reservation": "",
+  "annonce": "Prochain atelier découverte : samedi 17 octobre, 14 h. Sur inscription à l'accueil."
+}
