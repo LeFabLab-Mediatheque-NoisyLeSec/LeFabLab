@@ -10,7 +10,7 @@ layout: layouts/base.njk
   {% if ateliers_proposes.liste and ateliers_proposes.liste.length %}
   <aside class="encart-ateliers" aria-labelledby="h-ateliers-proposes">
     <h2 id="h-ateliers-proposes">{{ ateliers_proposes.titre or "Ateliers proposés" }}</h2>
-    {% if ateliers_proposes.intro %}<p class="encart-intro">{{ ateliers_proposes.intro }}</p>{% endif %}
+
     <ul>
       {% for a in ateliers_proposes.liste %}
       <li>
@@ -19,6 +19,7 @@ layout: layouts/base.njk
       </li>
       {% endfor %}
     </ul>
+    {% if ateliers_proposes.intro %}<p class="encart-intro">{{ ateliers_proposes.intro }}</p>{% endif %}
   </aside>
   {% endif %}
 </div>
