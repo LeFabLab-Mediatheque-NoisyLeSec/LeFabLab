@@ -1,16 +1,16 @@
 {
   "titre": "Ateliers proposés",
-  "intro": "Gratuits, sur inscription à l'accueil de la médiathèque.",
+  "intro": "Inscription par mail : mediatheque.noisylesec@est-ensemble.fr //  Par téléphone au 01 83 74 57 61",
   "liste": [
     {
       "nom": "Openlab",
       "publicduree": "Mardi 18h00 - 20h00 - A partir de 14 ans",
-      "details": "Tous les mardis soir de 18h00 à 20h00<br><br> Vous avez un projet à réalisé avec l'une des machines, vous souhaitez en savoir plus sur LeFabLab. <br><br> Inscription par mail : mediatheque.noisylesec@est-ensemble.fr <br> Par téléphone au 01 83 74 57 61"
+      "details": "Vous avez un projet à réalisé avec l'une des machines, vous souhaitez en savoir plus sur LeFabLab."
     },
     {
       "nom": "Les samedis du Fablab",
       "publicduree": "Samedi 10h30 - 12h00 - A partir de 14 ans",
-      "details": " Nous vous proposons toutes l'année des cycles de deux ateliers pour découvrir nos différentes machines (imprimante 3d, découpeuse vinyle, découpeuse laser). <br><br> Pour connaître la programmation n'hésitez pas à nous contacter."
+      "details": " Nous vous proposons toutes l'année des cycles de deux ateliers pour découvrir nos différentes machines (imprimante 3d, découpeuse vinyle, découpeuse laser). Pour connaître la programmation n'hésitez pas à nous contacter."
     }
   ]
 }
