@@ -4,7 +4,7 @@ ordre: 2
 image: /media/machines/decoupeuselaser.jpg
 modele: Creality Falcon2 Pro
 description: Découpez et gravez du bois, du carton  à partir d'un dessin vectoriel.
-formation_obligatoire: true
+formation_obligatoire: false
 materiaux_ok:
   - Contreplaqué et médium (MDF) jusqu'à 5 mm
   - Carton, papier épais
