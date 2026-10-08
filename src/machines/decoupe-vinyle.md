@@ -2,7 +2,7 @@
 title: Découpeuse vinyle
 ordre: 3
 image: /media/machines/decoupeusevinyle.jpg
-modele: À compléter (marque et modèle)
+modele: Secabo C30IV
 description: Créez des autocollants, des pochoirs et des flocages textiles.
 formation_obligatoire: false
 consignes_securite:
