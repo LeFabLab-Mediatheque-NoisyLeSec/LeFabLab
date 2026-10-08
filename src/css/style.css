@@ -2,6 +2,7 @@
    Les couleurs se changent ici, dans :root. */
 :root {
   --encre: #27616b;
+  --encrepieddepage : #3d0012;
   --texte: #2b3640;
   --discret: #5b6670;
   --papier: #faf7f2;
@@ -124,7 +125,7 @@ main { padding-top: 1.5rem; padding-bottom: 3rem; min-height: 60vh; }
 .infos-contact p { margin: .5rem 0; }
 
 /* Pied de page */
-.site-footer { background: var(--encre); color: #dfe6ea; font-size: .92rem; padding: 2rem 0; }
+.site-footer { background: var(--encrepieddepage); color: #dfe6ea; font-size: .92rem; padding: 2rem 0; }
 .site-footer a { color: #fff; }
 .footer-grid { display: grid; gap: 1rem 2rem; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); }
 .footer-title { color: #fff; font-weight: 700; margin-bottom: .2rem; }
