@@ -1,7 +1,7 @@
 ---
 title: Découpeuse laser
 ordre: 2
-image: /media/machines/decoupe-laser.svg
+image: /media/machines/decoupeuselaser.jpg
 modele: Creality Falcon2 Pro
 description: Découpez et gravez du bois, du carton  à partir d'un dessin vectoriel.
 formation_obligatoire: true
