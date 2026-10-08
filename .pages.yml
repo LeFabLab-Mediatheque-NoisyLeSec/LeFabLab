@@ -274,10 +274,14 @@ content:
             label: Nom de l'atelier
             type: string
             required: true
-          - name: details
+          - name: publicduree
             label: Public et durée
             type: string
             description: "Exemple : Dès 10 ans · 1 h 30"
+          - name: details
+            label: details
+            type: string
+            description: "Des ateliers pour faire ceci et cela"
 
   # ------------------------------------------------------------------
   - name: reglages
