@@ -4,11 +4,13 @@
   "liste": [
     {
       "nom": "Openlab",
-      "details": "Dès 10 ans · 1 h 30"
+      "publicduree": "Mardi 18h00 - 20h00 - A partir de 14 ans",
+      "details": "Tous les mardis soir de 18h00 à 20h00<br><br> Vous avez un projet à réalisé avec l'une des machines, vous souhaitez en savoir plus sur LeFabLab. <br><br> Inscription par mail : mediatheque.noisylesec@est-ensemble.fr <br> Par téléphone au 01 83 74 57 61"
     },
     {
       "nom": "Les samedis du Fablab",
-      "details": "Dès 14 ans · 2 h"
+      "publicduree": "Samedi 10h30 - 12h00 - A partir de 14 ans",
+      "details": " Nous vous proposons toutes l'année des cycles de deux ateliers pour découvrir nos différentes machines (imprimante 3d, découpeuse vinyle, découpeuse laser). <br><br> Pour connaître la programmation n'hésitez pas à nous contacter."
     }
   ]
 }
