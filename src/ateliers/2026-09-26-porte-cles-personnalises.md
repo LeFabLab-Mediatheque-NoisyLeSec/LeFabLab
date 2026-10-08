@@ -2,14 +2,14 @@
 title: Atelier porte-clés personnalisés
 date_atelier: 2026-09-26
 public: Familles, à partir de 8 ans
-resume: Douze participants ont dessiné puis gravé à la découpeuse laser leur porte-clés en bois.
+resume: Douze participants ont dessiné puis gravé à la découpeuse laser leur
+  porte-clés en bois.
+autorisations: true
 image: /media/ateliers/atelier-exemple.svg
 galerie:
   - /media/ateliers/atelier-exemple.svg
   - /media/ateliers/atelier-exemple-2.svg
-lien_album: ""
-autorisations: true
-brouillon: false
+brouillon: true
 ---
 Pendant deux heures, les participants ont découvert le dessin vectoriel sur Inkscape, puis assisté à la gravure de leur création sur du contreplaqué de 3 mm.
 
