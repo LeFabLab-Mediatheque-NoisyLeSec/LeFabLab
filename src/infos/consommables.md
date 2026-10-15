@@ -5,13 +5,13 @@ resume: Ce qui est fourni par le fablab et ce que vous pouvez apporter.
 ---
 ## Fourni par le fablab
 
-- Filament PLA pour l'imprimante 3D, dans la limite de 100 g par personne et par mois
-- Chutes de contreplaqué et de carton pour les essais de découpe laser
-- Vinyle adhésif en petits formats
+- Pour l'ensemble des petits projets personnels, des consommables sont fournis :
+  - Bois pour la découpeuse laser
+  - Vinyle pour la découpeuse vinyle
+  - Filaments PLA ou PETG pour l'impression 3D
 
 ## À apporter
 
-- Vos propres plaques pour la découpe laser, **après validation de leur composition par l'équipe**
+- Pour des projets plus personnalisés vous pouvez apportés vos propres consommables après accord avec l'équipe.
 - Vos textiles pour le flocage
 
-*Ces conditions sont un exemple : adaptez-les aux règles de votre médiathèque.*
