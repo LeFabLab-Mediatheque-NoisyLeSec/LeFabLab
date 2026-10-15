@@ -14,6 +14,7 @@ layout: layouts/base.njk
       <li>
         <span class="encart-nom">{{ a.nom }}</span>
         {% if a.details %}<span class="encart-details">{{ a.details }}</span>{% endif %}
+        {% if a.publicduree %}<span class="encart-details">{{ a.publicduree }}</span>{% endif %}
       </li>
       {% endfor %}
     </ul>
