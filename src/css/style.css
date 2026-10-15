@@ -153,3 +153,17 @@ h3, .h3 { font-size: 1.15rem; margin: 0 0 .4rem; }
 
    .rangee h2 { margin: 0 0 .9rem; }
    .rangee-pied { margin: 1rem 0 0; }
+
+/* Accueil : présentation et rangées à gauche, encadré "Ateliers proposés" à droite */
+.accueil { display: grid; gap: 2rem 3rem; align-items: start; padding-top: 1rem; }
+@media (min-width: 56rem) {
+  .accueil { grid-template-columns: minmax(0, 1fr) 20rem; }
+  .encart-ateliers { position: sticky; top: 1rem; }
+}
+.accueil .rangee:first-of-type { margin-top: 2rem; }
+.cartes-accueil { grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr)); }
+@media (min-width: 40rem) {
+  .cartes-accueil.cartes-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cartes-accueil.cartes-2 img { aspect-ratio: 2 / 1; }
+}
+@media (min-width: 56rem) { .cartes-accueil.cartes-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
