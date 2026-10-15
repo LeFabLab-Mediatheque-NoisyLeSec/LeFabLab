@@ -3,12 +3,12 @@
   "liste": [
     {
       "nom": "Openlab",
-      "publicduree": "Mardi 18h00 - 20h00 - A partir de 14 ans",
+      "publicduree": "Mardi 18h00 - 20h00",
       "details": "Vous avez un projet à réalisé et vous souhaités utiliser une des machines du fablab, vous souhaitez en savoir plus, venez nous rencontrer."
     },
     {
       "nom": "Les samedis du Fablab",
-      "publicduree": "Samedi 10h30 - 12h00 - A partir de 14 ans",
+      "publicduree": "Samedi 10h30 - 12h00",
       "details": " Nous vous proposons toutes l'année des cycles de deux ateliers pour découvrir nos différentes machines (imprimante 3d, découpeuse vinyle, découpeuse laser). Pour connaître la programmation n'hésitez pas à nous contacter."
     },
     {
