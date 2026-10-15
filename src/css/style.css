@@ -68,7 +68,7 @@ h3, .h3 { font-size: 1.15rem; margin: 0 0 .4rem; }
      @media (min-width: 56rem) { .accueil-haut { grid-template-columns: minmax(0, 1fr) 22rem; } }
      .hero { padding: .5rem 0 0; max-width: 48rem; }
      .encart-ateliers { background: var(--carte); border: 1px solid var(--ligne); border-top: 6px solid var(--accent); border-radius: var(--rayon); padding: .4rem 1.4rem 1.2rem; }
-     .encart-ateliers h2 { font-size: 1.25rem; margin: 1rem 0 .3rem; }
+     .encart-ateliers h2 { font-size: 1.25rem; margin: 1rem 0 .3rem; color:#d70f5b; }
      .encart-intro { color: var(--discret); margin: 0 0 .6rem; font-size: .95rem; }
      .encart-ateliers ul { list-style: none; margin: 0 0 1rem; padding: 0; }
      .encart-ateliers li { padding: .55rem 0; border-bottom: 1px solid var(--ligne); }
