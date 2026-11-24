@@ -9,6 +9,9 @@ export default function (eleventyConfig) {
   // Fichiers copiés tels quels
   eleventyConfig.addPassthroughCopy("src/media");
   eleventyConfig.addPassthroughCopy("src/css");
+  // Jeu « Les Défis de Pico » : page autonome copiée telle quelle
+  // (servie à l'adresse /defisdepico/)
+  eleventyConfig.addPassthroughCopy("src/defisdepico");
 
   // --- Collections -------------------------------------------------------
   eleventyConfig.addCollection("machines", (api) =>

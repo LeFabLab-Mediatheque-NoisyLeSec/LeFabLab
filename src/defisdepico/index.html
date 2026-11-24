@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Les Défis de Pico</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Andika:wght@400;700&display=swap">
+<style>
+/* Accueil façon menu de console : fond océan profond, cartes claires à contour épais comme dans le jeu. Thème sombre unique, voulu, pour faire ressortir les scènes du jeu. */
+:root {
+  --fond: #0f3b45;
+  --fond-2: #0b2e36;
+  --carte: #fffdf6;
+  --encre: #1c3b33;
+  --texte: #eaf6f1;
+  --doux: #a9cfc4;
+  --vert: #36a35a;
+  --soleil: #ffc531;
+  --tomate: #ff6142;
+  --orange: #ff8a1f;
+  --prune: #7d4fc4;
+  --f-titre: "Bagel Fat One", "Arial Black", sans-serif;
+  --f-texte: "Andika", Verdana, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { background: var(--fond); color: var(--texte); }
+body {
+  font-family: var(--f-texte); font-size: 17px; line-height: 1.45;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 14px 48px;
+  background-image: radial-gradient(circle at 15% 0%, #16525e 0, transparent 45%), radial-gradient(circle at 90% 100%, #0b4a3a 0, transparent 45%);
+  background-attachment: fixed;
+}
+.page { max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
+.page > .page { width: 100%; }
+h1, h2, h3 { font-family: var(--f-titre); font-weight: 400; margin: 0; line-height: 1.05; text-wrap: balance; }
+p { margin: 0; }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible, input:focus-visible { outline: 4px solid var(--soleil); outline-offset: 3px; }
+
+.barre { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.marque { display: flex; align-items: center; gap: 10px; font-family: var(--f-titre); font-size: 1.35rem; color: var(--soleil); margin-right: auto; }
+.marque img { width: 50px; height: 40px; }
+.btn-petit { background: var(--carte); color: var(--encre); border: 3px solid var(--encre); border-radius: 999px; padding: 4px 16px; font-weight: 700; font-size: .95rem; box-shadow: 0 4px 0 #061a1f; transition: transform .1s; }
+.btn-petit:hover { transform: translateY(-2px); }
+.btn-petit:active { transform: translateY(3px); box-shadow: 0 1px 0 #061a1f; }
+
+/* Bannière */
+.heros { position: relative; border-radius: 28px; overflow: hidden; border: 4px solid var(--encre); box-shadow: 0 10px 0 #061a1f; min-height: 250px;
+  background: linear-gradient(180deg, #ffe7a3 0, #c4eefa 34%, #5fd0ee 35%, #2b9fd2 70%, #155f93 100%); }
+.heros::before { content: ""; position: absolute; left: 0; right: 0; top: 33%; height: 14px; background: radial-gradient(circle at 14px 0, transparent 12px, #fff 13px, transparent 16px) 0 0 / 28px 14px repeat-x; opacity: .9; }
+.heros-texte { position: relative; z-index: 2; padding: 26px 30px; display: flex; flex-direction: column; gap: 14px; max-width: 640px; }
+.logo { font-family: var(--f-titre); font-size: clamp(2.6rem, 7.5vw, 4.6rem); line-height: .92; color: #fffdf6; -webkit-text-stroke: 3px var(--encre); paint-order: stroke fill; text-shadow: 0 7px 0 var(--encre); }
+.logo span { color: var(--soleil); }
+.accroche { background: rgba(255,253,246,.94); color: var(--encre); border: 3px solid var(--encre); border-radius: 16px; padding: 8px 14px; font-weight: 700; width: fit-content; max-width: 100%; box-shadow: 0 5px 0 rgba(6,26,31,.5); }
+.heros-pico { position: absolute; right: 6%; top: 8px; width: min(260px, 34%); z-index: 2; animation: tangue 3s ease-in-out infinite; transform-origin: 50% 90%; }
+@keyframes tangue { 50% { transform: rotate(3deg) translateY(4px); } }
+.heros-deco { position: absolute; bottom: 8px; display: flex; gap: 22px; right: 4%; z-index: 1; }
+.heros-deco img { height: 64px; animation: nage 4s ease-in-out infinite alternate; }
+.heros-deco img:nth-child(2) { animation-delay: -1.5s; height: 52px; }
+.heros-deco img:nth-child(3) { animation-delay: -3s; height: 70px; transform: scaleX(-1); }
+@keyframes nage { to { translate: -40px -10px; } }
+
+/* Panneau joueurs */
+.panneau { background: var(--carte); color: var(--encre); border: 4px solid var(--encre); border-radius: 26px; padding: 18px 20px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 8px 0 #061a1f; }
+.panneau-tete { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; }
+.panneau-tete h2 { font-size: 1.7rem; color: var(--vert); margin-right: auto; }
+.reglages { display: flex; flex-wrap: wrap; gap: 12px 28px; padding-top: 14px; border-top: 3px dashed #c6dccd; }
+.reglage { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.reglage-label { font-weight: 700; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: #4a6a60; }
+.segments { display: inline-flex; flex-wrap: wrap; background: #e4f0ea; border: 3px solid var(--encre); border-radius: 14px; padding: 3px; gap: 3px; }
+.segments button { border: 0; background: transparent; border-radius: 10px; padding: 5px 12px; font-weight: 700; font-size: .95rem; color: var(--encre); }
+.segments button[aria-pressed="true"] { background: var(--encre); color: var(--carte); }
+.note { color: #4a6a60; font-size: .95rem; }
+
+.joueurs { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.joueur { --jc: var(--prune); border-radius: 20px; padding: 14px 16px; display: flex; gap: 14px; align-items: center; background: var(--jc); color: #fff; border: 4px solid var(--encre); box-shadow: 0 6px 0 var(--encre); min-width: 0; }
+.joueur.j2 { --jc: var(--orange); }
+.avatar { flex: none; width: 84px; height: 84px; border-radius: 50%; border: 4px solid var(--encre); background: #fffdf6; display: grid; place-items: center; position: relative; box-shadow: 0 4px 0 var(--encre); transition: transform .15s; padding: 0; }
+.avatar img { width: 70px; height: 70px; object-fit: contain; }
+.avatar:hover { transform: rotate(-8deg) scale(1.06); }
+.avatar small { position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%); background: var(--soleil); color: var(--encre); border: 2px solid var(--encre); border-radius: 8px; font-size: .72rem; font-weight: 700; padding: 0 6px; white-space: nowrap; }
+.joueur-infos { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 0; }
+.joueur-infos label { font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; opacity: .9; }
+.joueur-infos input { font: inherit; font-family: var(--f-titre); font-size: 1.4rem; border: 3px solid var(--encre); border-radius: 12px; padding: 2px 10px; background: #fffdf6; color: var(--encre); width: 100%; min-width: 0; }
+.stats { display: flex; flex-wrap: wrap; gap: 6px 14px; font-weight: 700; font-size: .95rem; align-items: center; font-variant-numeric: tabular-nums; }
+.trophee { font-size: 1.3rem; }
+.joueur { flex-wrap: wrap; }
+.joueur.inactif { filter: saturate(.35) brightness(.92); opacity: .75; }
+.choisir { margin-left: auto; background: #fffdf6; color: var(--encre); border: 3px solid var(--encre); border-radius: 999px; padding: 4px 14px; font-weight: 700; box-shadow: 0 4px 0 var(--encre); min-height: 44px; }
+.choisir:disabled { background: var(--soleil); cursor: default; box-shadow: none; }
+.trophee.ferme { opacity: .3; filter: grayscale(1); }
+
+/* Défis */
+.titre-section { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 6px 16px; }
+.titre-section h2 { font-size: 1.9rem; color: var(--soleil); }
+.titre-section p { color: var(--doux); }
+.grille { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 18px; }
+.defi { --c: var(--vert); background: var(--carte); color: var(--encre); border: 4px solid var(--encre); border-radius: 22px; padding: 0; text-align: left; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 8px 0 #061a1f; transition: transform .15s, box-shadow .15s; }
+.defi:hover { transform: translateY(-6px); box-shadow: 0 14px 0 #061a1f; }
+.defi:active { transform: translateY(3px); box-shadow: 0 3px 0 #061a1f; }
+.d-ecran { position: relative; height: 140px; display: grid; place-items: center; border-bottom: 4px solid var(--encre); overflow: hidden; }
+.d-ecran img { position: relative; z-index: 1; height: 104px; max-width: 70%; object-fit: contain; filter: drop-shadow(0 6px 0 rgba(0,0,0,.2)); transition: transform .3s; }
+.defi:hover .d-ecran img { transform: scale(1.12) rotate(-6deg); }
+.d-num { position: absolute; top: 10px; left: 10px; z-index: 2; background: var(--carte); border: 3px solid var(--encre); border-radius: 999px; font-family: var(--f-titre); padding: 0 10px; font-size: .95rem; }
+.d-corps { padding: 12px 16px 16px; display: flex; flex-direction: column; gap: 5px; flex: 1; }
+.d-nom { font-family: var(--f-titre); font-size: 1.45rem; line-height: 1.05; color: var(--c); }
+.d-desc { color: #4a6a60; font-size: .95rem; line-height: 1.3; }
+.d-cmd { font-weight: 700; font-size: .85rem; background: #e4f0ea; border-radius: 8px; padding: 2px 8px; width: fit-content; }
+.d-bas { margin-top: auto; padding-top: 8px; border-top: 3px dashed #c6dccd; display: flex; flex-direction: column; gap: 3px; font-size: .85rem; font-weight: 700; }
+.d-ligne { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.d-ligne img { width: 22px; height: 22px; vertical-align: -5px; margin-right: 4px; }
+.etoiles { letter-spacing: 1px; font-size: 1.15rem; color: var(--soleil); -webkit-text-stroke: 1.5px var(--encre); }
+.etoiles .off { color: #e4f0ea; }
+.d-record { color: #4a6a60; font-variant-numeric: tabular-nums; }
+.s-tri { background: linear-gradient(transparent 58%, #2f3b45 58% 80%, #4c5964 80%), #a7d8cc; }
+.s-peche { background: linear-gradient(#c4eefa 0 22%, #5fd0ee 22%, #155f93); }
+.s-gaspi { background: linear-gradient(transparent 82%, #5fb262 82%), linear-gradient(#7fcdee, #d6f1fa); }
+.s-panier { background: radial-gradient(ellipse 80% 40% at 30% 100%, #5fb262 0 99%, transparent 100%), linear-gradient(#7fcdee, #e3f6fb); }
+.s-velo { background: linear-gradient(transparent 74%, #4c5964 74%), linear-gradient(#ffd9a0, #a8e0f3); }
+.s-memory { background: radial-gradient(circle, #a86d3a 2px, transparent 3px) 0 0 / 14px 14px, #c99158; }
+.s-quiz { background: linear-gradient(90deg, #d6403a 0 14%, transparent 14% 86%, #d6403a 86%), radial-gradient(ellipse at 50% 0, rgba(255,240,170,.5), transparent 60%), #40236a; }
+
+/* Jeu */
+.jeu-barre { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.jeu-barre p { color: var(--doux); font-size: .9rem; margin-left: auto; }
+#jeu { position: relative; contain: size layout; width: min(100%, calc((100vh - 110px) * 16 / 9)); min-width: min(100%, 320px); aspect-ratio: 16 / 9; height: auto; margin: 0 auto; border-radius: 22px; overflow: hidden; border: 0; box-shadow: 0 0 0 4px var(--encre), 0 12px 0 4px #061a1f; background: #0f3b45; }
+#jeu canvas { display: block; position: absolute; top: 0; left: 0; }
+
+.voile { position: fixed; inset: 0; background: rgba(6,26,31,.7); display: flex; align-items: center; justify-content: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); z-index: 40; }
+.fenetre { background: var(--carte); color: var(--encre); border: 4px solid var(--encre); border-radius: 24px; padding: 24px; max-width: 640px; width: 100%; max-height: 100%; overflow: auto; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 8px 0 #061a1f; }
+.fenetre h2 { font-size: 2rem; color: var(--vert); }
+.fenetre h3 { font-size: 1.2rem; color: var(--tomate); margin-top: 6px; }
+.fenetre ul { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 4px; }
+.credits { color: var(--doux); font-size: .85rem; text-align: center; }
+
+@media (max-width: 640px) { .heros { min-height: 300px; } .heros-pico { width: 150px; top: auto; bottom: 70px; } .heros-deco { display: none; } }
+@media (prefers-reduced-motion: reduce) { .heros-pico, .heros-deco img { animation: none; } }
+</style>
+
+<div class="page">
+  <header class="barre">
+    <div class="marque"><img id="marque-pico" alt="">Les Défis de Pico</div>
+    <div id="pills" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+    <button class="btn-petit" id="btn-son" type="button">Son : oui</button>
+    <button class="btn-petit" id="btn-aide" type="button">Comment jouer</button>
+  </header>
+
+  <section id="ecran-hub" class="page" style="padding:0">
+    <div class="heros">
+      <div class="heros-texte">
+        <h1 class="logo">Les Défis<br>de <span>Pico</span></h1>
+        <p class="accroche">7 mini-jeux pour sauver la planète. Gagne des étoiles et bats les records !</p>
+      </div>
+      <img class="heros-pico" id="heros-pico" alt="">
+      <div class="heros-deco" aria-hidden="true"><img src="assets/img/fish_orange.png" alt=""><img src="assets/img/fish_blue.png" alt=""><img src="assets/img/fish_pink.png" alt=""></div>
+    </div>
+
+    <div class="panneau">
+      <div class="panneau-tete">
+        <h2>Les joueurs</h2>
+        <div class="reglage">
+          <span class="reglage-label">Combien ?</span>
+          <div class="segments" id="seg-nb" role="group" aria-label="Nombre de joueurs">
+            <button type="button" data-n="1">1 joueur</button>
+            <button type="button" data-n="2">2 joueurs</button>
+          </div>
+        </div>
+      </div>
+      <div class="joueurs" id="joueurs"></div>
+      <p class="note" id="note-duel">À 2 joueurs, chacun garde ses étoiles. Clique sur « C'est à moi ! » pour choisir qui joue, ou change de joueur sur l'écran de règles de chaque défi.</p>
+      <div class="reglages">
+        <div class="reglage">
+          <span class="reglage-label">Temps par défi</span>
+          <div class="segments" id="seg-temps" role="group" aria-label="Temps de chaque défi">
+            <button type="button" data-t="30">30 s</button>
+            <button type="button" data-t="45">45 s</button>
+            <button type="button" data-t="60">1 min</button>
+            <button type="button" data-t="90">1 min 30</button>
+          </div>
+        </div>
+        <div class="reglage">
+          <span class="reglage-label">Vitesse</span>
+          <div class="segments" id="seg-vitesse" role="group" aria-label="Vitesse du jeu">
+            <button type="button" data-v="doux">Doux</button>
+            <button type="button" data-v="normal">Normal</button>
+            <button type="button" data-v="turbo">Turbo</button>
+          </div>
+        </div>
+      </div>
+      <p class="note" id="note-temps"></p>
+    </div>
+
+    <div class="titre-section"><h2>Choisis un défi</h2><p>Chaque défi rapporte jusqu'à 3 étoiles.</p></div>
+    <div class="grille" id="grille"></div>
+    <div style="text-align:center"><button class="btn-petit" id="btn-raz" type="button">Effacer les scores et les étoiles</button></div>
+    <p class="credits">Images des poissons, des fonds marins, des avatars et des particules, et sons : Kenney (kenney.nl, licence CC0). Pico et les autres dessins sont faits pour ce jeu.</p>
+  </section>
+
+  <section id="ecran-jeu" class="page" style="padding:0" hidden>
+    <div class="jeu-barre">
+      <button class="btn-petit" id="btn-retour" type="button">← Les défis</button>
+      <p>Souris, doigt ou clavier. Entrée valide les boutons.</p>
+    </div>
+    <div id="jeu"></div>
+  </section>
+</div>
+
+<div class="voile" id="aide" hidden>
+  <div class="fenetre" role="dialog" aria-modal="true" aria-labelledby="aide-titre">
+    <h2 id="aide-titre">Comment jouer</h2>
+    <p>7 mini-jeux. Chaque défi rapporte jusqu'à 3 étoiles, soit 21 étoiles en tout.</p>
+    <h3>Seul ou à deux</h3>
+    <ul>
+      <li><b>1 joueur</b> : on joue pour gagner des étoiles et battre les records.</li>
+      <li><b>2 joueurs</b> : chacun garde ses propres étoiles. On choisit librement qui joue, sur l'accueil (« C'est à moi ! ») ou sur l'écran de règles de chaque défi (« Qui joue ? »).</li>
+      <li>Clique sur l'animal d'un joueur pour le changer, et sur son nom pour l'écrire.</li>
+    </ul>
+    <h3>Le temps et la vitesse</h3>
+    <ul>
+      <li>« Temps par défi » règle la durée de tous les défis : 30 secondes, 45 secondes, 1 minute ou 1 minute 30. Les étoiles s'adaptent à la durée.</li>
+      <li>Pour le quiz, c'est le temps de réponse à chaque question qui change.</li>
+      <li>La vitesse « Doux » ralentit tout : idéal pour commencer.</li>
+    </ul>
+    <h3>Les commandes</h3>
+    <ul>
+      <li>Tout se joue à la souris, ou au doigt sur un écran tactile.</li>
+      <li>Au clavier : 1 à 4 pour le tri, flèches pour le panier, Espace pour sauter à vélo, V et F pour le quiz, Entrée pour les boutons.</li>
+    </ul>
+    <div><button class="btn-petit" id="btn-fermer-aide" type="button">Fermer</button></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.80.1/phaser.min.js"></script>
+<script src="js/ressources.js"></script>
+<script src="js/dessins.js"></script>
+<script src="js/defis.js"></script>
+<script src="js/moteur.js"></script>
+<script>
+(function () {
+  "use strict";
+  var $ = function (s) { return document.querySelector(s); };
+  var P = window.PICO, S = P.S;
+  function url(svg) { return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg); }
+  function ico(cle) { return /^fish_/.test(cle) ? "assets/img/" + cle + ".png" : /^av_/.test(cle) ? "assets/av/" + cle.slice(3) + ".png" : url(window.DESSINS[cle]); }
+  function esc(s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+  function total(J) { var t = 0; P.ORDRE.forEach(function (k) { t += J.etoiles[k] || 0; }); return t; }
+  function etoiles(n) { var s = ""; for (var i = 0; i < 3; i++) s += '<span class="' + (i < n ? "" : "off") + '">★</span>'; return s; }
+  function dureeTxt(t) { return t < 60 ? t + " s" : t === 60 ? "1 min" : "1 min 30"; }
+
+  $("#marque-pico").src = url(window.picoSvgDom("ok"));
+  $("#heros-pico").src = url(window.picoSvgDom("joie"));
+
+  function majEntete() {
+    var b = $("#pills"); b.innerHTML = "";
+    for (var i = 0; i < S.nb; i++) {
+      var J = S.joueurs[i], s = document.createElement("span");
+      s.className = "btn-petit"; s.style.cssText = "background:" + (i ? "var(--orange)" : "var(--prune)") + ";color:#fff;display:inline-flex;align-items:center;gap:6px;padding:2px 12px 2px 4px";
+      if (S.nb === 2 && i !== S.actif) s.style.opacity = ".45";
+      s.innerHTML = '<img src="assets/av/' + J.av + '.png" alt="" style="width:28px;height:28px">' + esc(P.nom(J)) + " · ★ " + total(J) + (S.nb === 2 && i === S.actif ? " · joue" : "");
+      b.appendChild(s);
+    }
+    $("#btn-son").textContent = "Son : " + (S.son ? "oui" : "non");
+  }
+  function majJoueurs() {
+    var b = $("#joueurs"); b.innerHTML = "";
+    for (var i = 0; i < S.nb; i++) (function (i) {
+      var J = S.joueurs[i], t = total(J), c = document.createElement("div");
+      var inactif = S.nb === 2 && i !== S.actif;
+      c.className = "joueur" + (i ? " j2" : "") + (inactif ? " inactif" : "");
+      c.innerHTML = '<button class="avatar" type="button" aria-label="Changer l\'animal de ' + esc(P.nom(J)) + '"><img src="assets/av/' + J.av + '.png" alt=""><small>changer</small></button>' +
+        '<div class="joueur-infos"><label for="nom-j' + (i + 1) + '">Joueur ' + (i + 1) + '</label><input id="nom-j' + (i + 1) + '" type="text" maxlength="16" autocomplete="off">' +
+        '<div class="stats"><span>★ ' + t + ' / 21</span><span class="trophee' + (t >= 7 ? "" : " ferme") + '" title="7 étoiles">🥉</span><span class="trophee' + (t >= 14 ? "" : " ferme") + '" title="14 étoiles">🥈</span><span class="trophee' + (t >= 21 ? "" : " ferme") + '" title="21 étoiles">🏆</span>' +
+        "" + '</div></div>';
+      var inp = c.querySelector("input"); inp.value = J.nom;
+      inp.addEventListener("input", function () { J.nom = inp.value; P.sauver(); majEntete(); document.querySelectorAll(".nomj" + i).forEach(function (n) { n.textContent = P.nom(J); }); });
+      c.querySelector(".avatar").addEventListener("click", function () {
+        var k = (P.AVATARS.indexOf(J.av) + 1) % P.AVATARS.length;
+        if (S.nb === 2 && P.AVATARS[k] === S.joueurs[1 - i].av) k = (k + 1) % P.AVATARS.length;
+        J.av = P.AVATARS[k]; P.sauver(); majTout();
+      });
+      if (S.nb === 2) {
+        var choix = document.createElement("button"); choix.type = "button"; choix.className = "choisir";
+        choix.textContent = inactif ? "C'est à moi !" : "Joue maintenant";
+        choix.disabled = !inactif;
+        choix.addEventListener("click", function () { S.actif = i; P.sauver(); majTout(); });
+        c.appendChild(choix);
+      }
+      b.appendChild(c);
+    })(i);
+    $("#note-duel").hidden = S.nb !== 2;
+  }
+  function majGrille() {
+    var g = $("#grille"); g.innerHTML = "";
+    P.ORDRE.forEach(function (id, n) {
+      var d = P.DEFIS[id], b = document.createElement("button");
+      b.type = "button"; b.className = "defi"; b.style.setProperty("--c", ["#b87b00", "#1f86b8", "#d2571a", "#c8401c", "#2f8a2e", "#6a3fb5", "#c8302c"][n]);
+      var rec = S.record[id], recTxt = rec ? "Record : " + (d.recTxt ? d.recTxt(rec.v) : rec.v + " pts") + " · " + esc(rec.nom) : "Pas encore de record";
+      var lignes = "";
+      for (var k = 0; k < S.nb; k++) { var J = S.joueurs[k]; lignes += '<div class="d-ligne"><span><img src="assets/av/' + J.av + '.png" alt=""><span class="nomj' + k + '">' + esc(P.nom(J)) + '</span></span><span class="etoiles" aria-label="' + (J.etoiles[id] || 0) + ' étoiles sur 3">' + etoiles(J.etoiles[id] || 0) + '</span></div>'; }
+      var duree = d.chrono ? dureeTxt(S.temps) : P.TEMPS_QUIZ[S.temps] + " s par question";
+      b.innerHTML = '<div class="d-ecran s-' + id + '"><span class="d-num">Défi ' + (n + 1) + '</span><img src="' + ico(d.ico) + '" alt=""></div>' +
+        '<div class="d-corps"><span class="d-nom">' + d.nom + '</span><span class="d-desc">' + d.desc + '</span><span class="d-cmd">' + d.cmd + ' · ' + duree + '</span>' +
+        '<div class="d-bas">' + lignes + '<span class="d-record">' + recTxt + '</span></div></div>';
+      b.addEventListener("click", function () { P.lancer(id); });
+      g.appendChild(b);
+    });
+  }
+  function majTout() {
+    majEntete(); majJoueurs(); majGrille();
+    document.querySelectorAll("#seg-nb button").forEach(function (b) { b.setAttribute("aria-pressed", String(Number(b.dataset.n) === S.nb)); });
+    document.querySelectorAll("#seg-temps button").forEach(function (b) { b.setAttribute("aria-pressed", String(Number(b.dataset.t) === S.temps)); });
+    document.querySelectorAll("#seg-vitesse button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.v === S.diff)); });
+    $("#note-temps").textContent = "Chaque défi dure " + dureeTxt(S.temps) + ". Pour le quiz : " + P.TEMPS_QUIZ[S.temps] + " secondes par question.";
+  }
+  P.majAccueil = majTout;
+
+  document.querySelectorAll("#seg-nb button").forEach(function (b) { b.addEventListener("click", function () { S.nb = Number(b.dataset.n); P.sauver(); majTout(); }); });
+  document.querySelectorAll("#seg-temps button").forEach(function (b) { b.addEventListener("click", function () { S.temps = Number(b.dataset.t); P.sauver(); majTout(); }); });
+  document.querySelectorAll("#seg-vitesse button").forEach(function (b) { b.addEventListener("click", function () { S.diff = b.dataset.v; P.sauver(); majTout(); }); });
+  var arme = false;
+  $("#btn-raz").addEventListener("click", function () {
+    var bt = $("#btn-raz");
+    if (!arme) { arme = true; bt.textContent = "Sûr ? Clique encore pour tout effacer"; setTimeout(function () { arme = false; bt.textContent = "Effacer les scores et les étoiles"; }, 3000); return; }
+    arme = false; bt.textContent = "Effacer les scores et les étoiles";
+    S.record = {}; S.joueurs.forEach(function (J) { J.etoiles = {}; }); P.sauver(); majTout();
+  });
+  $("#btn-son").addEventListener("click", function () { S.son = !S.son; P.sauver(); majEntete(); if (P.jeu) P.jeu.sound.mute = !S.son; });
+  $("#btn-aide").addEventListener("click", function () { $("#aide").hidden = false; $("#btn-fermer-aide").focus(); });
+  $("#btn-fermer-aide").addEventListener("click", function () { $("#aide").hidden = true; });
+  $("#aide").addEventListener("click", function (e) { if (e.target.id === "aide") $("#aide").hidden = true; });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") $("#aide").hidden = true; });
+  $("#btn-retour").addEventListener("click", function () { P.retourAccueil(); });
+  majTout();
+})();
+</script>
